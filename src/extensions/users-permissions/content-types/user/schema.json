@@ -1,0 +1,260 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users",
+      "configurable": false
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "user_role": {
+      "type": "enumeration",
+      "default": "visiteur",
+      "enum": [
+        "owner",
+        "admin",
+        "benevole",
+        "visiteur",
+        "InsecritScourisme"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "cin": {
+      "type": "integer"
+    },
+    "phoneNumber": {
+      "type": "integer"
+    },
+    "date_n_benevole": {
+      "type": "date"
+    },
+    "lieu_n_benevole": {
+      "type": "blocks"
+    },
+    "adresse": {
+      "type": "string"
+    },
+    "profession": {
+      "type": "enumeration",
+      "enum": [
+        "Etudiant",
+        "Etudiante",
+        "Médecin",
+        "Enseignant",
+        "Ingénieur",
+        "Infirmier",
+        "infirmière",
+        "Comptable",
+        "Policier",
+        "policière",
+        "Sapeur-pompier",
+        "Autres"
+      ]
+    },
+    "niveau_etude": {
+      "type": "enumeration",
+      "enum": [
+        "College",
+        "Lycee",
+        "Baccalaureat",
+        "Enseignement Superieur",
+        "Licence",
+        "Master",
+        "Doctorat",
+        "Autres"
+      ]
+    },
+    "diplome_obtenu": {
+      "type": "text"
+    },
+    "nom_etablisement": {
+      "type": "text"
+    },
+    "nom_pere": {
+      "type": "string"
+    },
+    "nom_mere": {
+      "type": "string"
+    },
+    "prenom_mere": {
+      "type": "string"
+    },
+    "num_tele_parents": {
+      "type": "biginteger"
+    },
+    "genre": {
+      "type": "enumeration",
+      "enum": [
+        "Homme",
+        "Femme",
+        "Autres"
+      ]
+    },
+    "Annee_volontariat": {
+      "type": "date"
+    },
+    "secouriste": {
+      "type": "boolean",
+      "default": false
+    },
+    "loisir": {
+      "type": "enumeration",
+      "enum": [
+        "Lecture",
+        "Cinéma",
+        "Musique",
+        "Sport",
+        "Randonnée",
+        "Voyage",
+        "Cuisine",
+        "Arts visuels",
+        "Jardinage",
+        "Jeux de société",
+        "Collection",
+        "Théâtre",
+        "Yoga et Méditation",
+        "Volontariat",
+        "Camping",
+        "Photographie",
+        "Danse",
+        "Plongée sous-marine",
+        "Escalade",
+        "Jeux vidéo",
+        "Astrologie",
+        "Écriture",
+        "Artisanat",
+        "Équitation",
+        "Science",
+        "Observation d'oiseaux",
+        "Autres"
+      ]
+    },
+    "certificat_crt": {
+      "type": "enumeration",
+      "enum": [
+        "Certificat de secouriste",
+        "Certificat de coordination des catastrophes",
+        "Certificat de gestion des bénévoles",
+        "Certificat de préparation aux catastrophes",
+        "Certificat de gestion des opérations sur le terrain",
+        "Certificat en santé communautaire",
+        "Certificat en gestion de l'eau et de l'assainissement en situation d'urgence",
+        "Certificat de conseiller en soutien psychosocial",
+        "Certificat en logistique humanitaire",
+        "Certificat de gestion de projets humanitaires",
+        "Certificat Assistance vitale de base (BLS)",
+        "Autres"
+      ]
+    },
+    "images_demander": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "nb_participation": {
+      "type": "integer"
+    },
+    "Insicrit_Secourisme": {
+      "type": "boolean",
+      "default": false
+    },
+    "CompletProfile": {
+      "type": "boolean",
+      "default": false
+    },
+    "Date_Debut_Formation": {
+      "type": "date"
+    },
+    "benevole": {
+      "type": "boolean",
+      "default": false
+    },
+    "attribut": {
+      "type": "enumeration",
+      "enum": [
+        "Président de l'association",
+        "vice-président",
+        "Commis général",
+        "Trésorier",
+        "Membre responsable d'ambulance",
+        "Membre en charge de la publication",
+        "Membre en charge de la santé",
+        "Membre en charge du travail social",
+        "Membre en charge des secours",
+        "Membre en charge de la jeunesse"
+      ]
+    },
+    "commentaire_owner": {
+      "type": "blocks"
+    }
+  }
+}

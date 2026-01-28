@@ -922,31 +922,144 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
+    adresse: Schema.Attribute.String;
+    Annee_volontariat: Schema.Attribute.Date;
+    attribut: Schema.Attribute.Enumeration<
+      [
+        "Pr\u00E9sident de l'association",
+        'vice-pr\u00E9sident',
+        'Commis g\u00E9n\u00E9ral',
+        'Tr\u00E9sorier',
+        "Membre responsable d'ambulance",
+        'Membre en charge de la publication',
+        'Membre en charge de la sant\u00E9',
+        'Membre en charge du travail social',
+        'Membre en charge des secours',
+        'Membre en charge de la jeunesse',
+      ]
+    >;
+    benevole: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    certificat_crt: Schema.Attribute.Enumeration<
+      [
+        'Certificat de secouriste',
+        'Certificat de coordination des catastrophes',
+        'Certificat de gestion des b\u00E9n\u00E9voles',
+        'Certificat de pr\u00E9paration aux catastrophes',
+        'Certificat de gestion des op\u00E9rations sur le terrain',
+        'Certificat en sant\u00E9 communautaire',
+        "Certificat en gestion de l'eau et de l'assainissement en situation d'urgence",
+        'Certificat de conseiller en soutien psychosocial',
+        'Certificat en logistique humanitaire',
+        'Certificat de gestion de projets humanitaires',
+        'Certificat Assistance vitale de base (BLS)',
+        'Autres',
+      ]
+    >;
+    cin: Schema.Attribute.Integer;
+    commentaire_owner: Schema.Attribute.Blocks;
+    CompletProfile: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Date_Debut_Formation: Schema.Attribute.Date;
+    date_n_benevole: Schema.Attribute.Date;
+    description: Schema.Attribute.Blocks;
+    diplome_obtenu: Schema.Attribute.Text;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    firstName: Schema.Attribute.String;
+    genre: Schema.Attribute.Enumeration<['Homme', 'Femme', 'Autres']>;
+    images_demander: Schema.Attribute.Media<'images', true>;
+    Insicrit_Secourisme: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    lastName: Schema.Attribute.String;
+    lieu_n_benevole: Schema.Attribute.Blocks;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    loisir: Schema.Attribute.Enumeration<
+      [
+        'Lecture',
+        'Cin\u00E9ma',
+        'Musique',
+        'Sport',
+        'Randonn\u00E9e',
+        'Voyage',
+        'Cuisine',
+        'Arts visuels',
+        'Jardinage',
+        'Jeux de soci\u00E9t\u00E9',
+        'Collection',
+        'Th\u00E9\u00E2tre',
+        'Yoga et M\u00E9ditation',
+        'Volontariat',
+        'Camping',
+        'Photographie',
+        'Danse',
+        'Plong\u00E9e sous-marine',
+        'Escalade',
+        'Jeux vid\u00E9o',
+        'Astrologie',
+        '\u00C9criture',
+        'Artisanat',
+        '\u00C9quitation',
+        'Science',
+        "Observation d'oiseaux",
+        'Autres',
+      ]
+    >;
+    nb_participation: Schema.Attribute.Integer;
+    niveau_etude: Schema.Attribute.Enumeration<
+      [
+        'College',
+        'Lycee',
+        'Baccalaureat',
+        'Enseignement Superieur',
+        'Licence',
+        'Master',
+        'Doctorat',
+        'Autres',
+      ]
+    >;
+    nom_etablisement: Schema.Attribute.Text;
+    nom_mere: Schema.Attribute.String;
+    nom_pere: Schema.Attribute.String;
+    num_tele_parents: Schema.Attribute.BigInteger;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    phoneNumber: Schema.Attribute.Integer;
+    prenom_mere: Schema.Attribute.String;
+    profession: Schema.Attribute.Enumeration<
+      [
+        'Etudiant',
+        'Etudiante',
+        'M\u00E9decin',
+        'Enseignant',
+        'Ing\u00E9nieur',
+        'Infirmier',
+        'infirmi\u00E8re',
+        'Comptable',
+        'Policier',
+        'polici\u00E8re',
+        'Sapeur-pompier',
+        'Autres',
+      ]
+    >;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
@@ -954,9 +1067,14 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    secouriste: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user_role: Schema.Attribute.Enumeration<
+      ['owner', 'admin', 'benevole', 'visiteur', 'InsecritScourisme']
+    > &
+      Schema.Attribute.DefaultTo<'visiteur'>;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
