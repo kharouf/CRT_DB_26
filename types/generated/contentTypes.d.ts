@@ -982,7 +982,7 @@ export interface PluginUsersPermissionsUser
     Insicrit_Secourisme: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     lastName: Schema.Attribute.String;
-    lieu_n_benevole: Schema.Attribute.Blocks;
+    lieu_n_benevole: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1060,6 +1060,7 @@ export interface PluginUsersPermissionsUser
         'Autres',
       ]
     >;
+    profile_picture: Schema.Attribute.Media<'images'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;

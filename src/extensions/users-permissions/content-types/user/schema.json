@@ -95,9 +95,6 @@
     "date_n_benevole": {
       "type": "date"
     },
-    "lieu_n_benevole": {
-      "type": "blocks"
-    },
     "adresse": {
       "type": "string"
     },
@@ -255,6 +252,16 @@
     },
     "commentaire_owner": {
       "type": "blocks"
+    },
+    "profile_picture": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "lieu_n_benevole": {
+      "type": "text"
     }
   }
 }
