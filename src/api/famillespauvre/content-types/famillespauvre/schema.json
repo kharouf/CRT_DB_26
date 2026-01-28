@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "famillespauvres",
+  "info": {
+    "singularName": "famillespauvre",
+    "pluralName": "famillespauvres",
+    "displayName": "famillespauvre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lastName": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "cin": {
+      "type": "biginteger"
+    },
+    "phoneNumber": {
+      "type": "biginteger"
+    },
+    "adresse": {
+      "type": "text"
+    },
+    "Type_Carte_Traitement": {
+      "type": "enumeration",
+      "enum": [
+        "CNAM",
+        "CNSS"
+      ]
+    },
+    "categories": {
+      "type": "enumeration",
+      "enum": [
+        "BBB",
+        "CCC",
+        "NNN"
+      ]
+    }
+  }
+}

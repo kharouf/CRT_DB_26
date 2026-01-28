@@ -467,6 +467,41 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFamillespauvreFamillespauvre
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'famillespauvres';
+  info: {
+    displayName: 'famillespauvre';
+    pluralName: 'famillespauvres';
+    singularName: 'famillespauvre';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adresse: Schema.Attribute.Text;
+    categories: Schema.Attribute.Enumeration<['BBB', 'CCC', 'NNN']>;
+    cin: Schema.Attribute.BigInteger;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    firstName: Schema.Attribute.String;
+    lastName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::famillespauvre.famillespauvre'
+    > &
+      Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    Type_Carte_Traitement: Schema.Attribute.Enumeration<['CNAM', 'CNSS']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1097,6 +1132,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::famillespauvre.famillespauvre': ApiFamillespauvreFamillespauvre;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
